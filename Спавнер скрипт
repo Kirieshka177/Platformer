@@ -1,0 +1,28 @@
+
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using UnityEngine;
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField] GameObject prefabToSpawnEnemies;
+    [SerializeField] GameObject prefabToSpawnCoins;
+    [SerializeField] Transform[] spawnEnemiesPoints;
+    [SerializeField] Transform[] spawnCoinsPoints;
+
+
+    private void Start()
+    {
+        SpawnAllEnemies();
+    }
+
+    private void SpawnAllEnemies()
+    {
+        foreach (Transform point in spawnEnemiesPoints)
+        {
+            if (point != null && prefabToSpawnEnemies != null)
+            {
+                Instantiate(prefabToSpawnEnemies, point.position, point.rotation);
+            }
+        }
+    }
+}
